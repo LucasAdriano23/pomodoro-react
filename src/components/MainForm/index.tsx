@@ -9,6 +9,7 @@ import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 import { Tips } from '../../components/Tips';
+import { toast } from 'react-toastify';
 
 export function MainForm(){
     const taskNameInput= useRef<HTMLInputElement>(null);
@@ -18,12 +19,16 @@ export function MainForm(){
     const nextCycleType = getNextCycleType(nextCycle);
 
     function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>){
-        console.log('handleCreateNewTask');
         event.preventDefault();
 
         if(taskNameInput.current === null) return;
 
         const taskName = taskNameInput.current.value.trim();
+
+        if(!taskName){
+            toast.error('Digite o nome da tarefa!');
+            return;
+        }
 
         const newTask: TaskModel = {
             id: Date.now().toString(),
