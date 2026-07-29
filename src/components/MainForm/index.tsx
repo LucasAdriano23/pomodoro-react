@@ -55,36 +55,36 @@ export function MainForm(){
     }
 
     return (
-    <form onSubmit={handleCreateNewTask} className='form' action="">
-        <div className="formRow">
-            <DefaultInput 
-                type='text' 
-                id="meuInput" 
-                labelText="Task"
-                placeholder='Digite algo'
-                disabled={!!state.activeTask}
-                ref={taskNameInput}
-                defaultValue={lastTaskName}
-            />
-        </div> 
+        <form onSubmit={handleCreateNewTask} className='form' action="">
+            <div className="formRow">
+                <DefaultInput 
+                    type='text' 
+                    id="meuInput" 
+                    labelText="Task"
+                    placeholder='Digite algo'
+                    disabled={!!state.activeTask}
+                    ref={taskNameInput}
+                    defaultValue={lastTaskName}
+                />
+            </div> 
 
-        <div className="formRow">
-            <Tips/>
-        </div>
+            <div className="formRow">
+                <Tips/>
+            </div>
 
-        <div className="formRow">
-            <Cycles/>
-        </div>
+            <div className="formRow">
+                <Cycles/>
+            </div>
 
-        <div className="formRow">
-            {!state.activeTask && (
-                <DefaultButton type="submit" title="Iniciar nova tarefa" aria-label="Iniciar nova tarefa" icon={<PlayCircleIcon/>} />
-            )}
+            <div className="formRow">
+                {!state.activeTask && (
+                    <DefaultButton type="submit" title="Iniciar nova tarefa" aria-label="Iniciar nova tarefa" icon={<PlayCircleIcon/>} />
+                )}
 
-            {!!state.activeTask && (
-                <DefaultButton type="button" title="Interromper nova tarefa" aria-label="Interromper nova tarefa" onClick={e => handleInterruptTask(e)} icon={<StopCircleIcon/>} color='red' />
-            )}
-        </div>
-    </form>
+                {!!state.activeTask && (
+                    <DefaultButton type="button" title="Interromper nova tarefa" aria-label="Interromper nova tarefa" onClick={e => handleInterruptTask(e)} icon={<StopCircleIcon/>} color='red' />
+                )}
+            </div>
+        </form>
     );
 }
