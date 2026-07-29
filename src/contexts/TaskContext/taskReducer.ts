@@ -17,7 +17,7 @@ export function taskReducer (state: TaskStateModel, action: TaskActionModel) : T
                 currentCycle: nextCycle,
                 secondsRemaining,
                 formatedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
-                tasks: [...state.tasks]
+                tasks: [...state.tasks, newTask]
             }
         }
 
