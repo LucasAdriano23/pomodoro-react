@@ -46,6 +46,14 @@ export function TaskContextProvider({ children } : TaskContextProviderProps) {
         worker.postMessage(state);
     }, [state.activeTask]);
 
+    useEffect(() => {
+        if (state.activeTask) {
+            document.title = `${state.formatedSecondsRemaining} - Pomodoro`;
+        } else {
+            document.title = 'Pomodoro';
+        }
+    }, [state.formatedSecondsRemaining, state.activeTask]);
+
     return (
         <TaskContext.Provider value={{ state, dispatch }}>
             {children}
