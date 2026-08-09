@@ -2,8 +2,6 @@
 
 App web pra gerenciar tempo com a técnica Pomodoro. React 19 + TypeScript + Vite.
 
-> **Status:** início de desenvolvimento.
-
 ## Tecnologias
 
 - [React 19](https://react.dev/)
