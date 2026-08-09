@@ -1,12 +1,15 @@
-import { useState } from 'react'
-
 import './App.css'
+import { MessagesContainer } from './components/MessagesContainer'
+import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider'
+import { MainRouter } from './routers/MainRouter'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div>Olá Mundo {count}</div>
+    <TaskContextProvider>
+        <MessagesContainer>
+          <MainRouter/>
+        </MessagesContainer>
+    </TaskContextProvider>
   )
 }
 

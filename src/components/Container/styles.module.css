@@ -1,0 +1,14 @@
+.container {
+  max-width: 98rem;
+  margin: 0 auto;
+}
+
+.container-fluid {
+  background-color: purple;
+  max-width: auto;
+}
+
+.content {
+  margin: 1.2rem;
+  text-align: center;
+}
