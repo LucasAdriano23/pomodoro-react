@@ -19,7 +19,7 @@ export function TaskContextProvider({ children } : TaskContextProviderProps) {
 
         const parsedStorageState = JSON.parse(storageState) as TaskStateModel;
 
-        return { ...parsedStorageState, activeTask: null, secondsRemaining: 0, formatedSecondsRemaining: '00:00' };
+        return { ...parsedStorageState, config: initialTaskState.config, activeTask: null, secondsRemaining: 0, formatedSecondsRemaining: '00:00' };
     });
     const playBeepRef = useRef<ReturnType<typeof loadBeep> | null>(null);
 
