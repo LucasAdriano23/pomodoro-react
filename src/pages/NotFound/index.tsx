@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import { Container } from "../../components/Container";
 import { GenericHtml } from "../../components/GenericHtml";
 import { MainTemplate } from "../../templates/MainTemplates";
 
 export function NotFound(){
+
+    useEffect(() => {
+        document.title = 'página não encontrada';
+    },[])
+    
     return (
         <MainTemplate>
             <Container>

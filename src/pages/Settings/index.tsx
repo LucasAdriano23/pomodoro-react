@@ -3,12 +3,17 @@ import { Container } from "../../components/Container";
 import { DefaultButton } from "../../components/DefaultButton";
 import { DefaultInput } from "../../components/DefaultInput";
 import { MainTemplate } from "../../templates/MainTemplates";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { showMessage } from "../../adapters/showMessage";
 import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 
 export function Settings(){
+
+    useEffect(() => {
+        document.title = 'Configurações';
+    },[]);
+    
     const { state, dispatch } = useTaskContext();
     const workTimeInput = useRef<HTMLInputElement | null>(null);
     const shortBreakTimeInput = useRef<HTMLInputElement | null>(null);

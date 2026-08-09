@@ -14,6 +14,10 @@ import { showMessage } from "../../adapters/showMessage";
 
 export function History(){
 
+    useEffect(() => {
+        document.title = 'Histórico';
+    },[])
+
     const { state, dispatch } = useTaskContext();
     const hasTasks = state.tasks.length > 0;
 
