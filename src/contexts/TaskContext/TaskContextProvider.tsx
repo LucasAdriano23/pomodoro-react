@@ -53,9 +53,6 @@ export function TaskContextProvider({ children } : TaskContextProviderProps) {
         });
 
         worker.postMessage(state);
-    }, [state.activeTask]);
-
-    useEffect(() => {
 
         localStorage.setItem('state', JSON.stringify(state));
         
@@ -64,7 +61,7 @@ export function TaskContextProvider({ children } : TaskContextProviderProps) {
         } else {
             document.title = 'Pomodoro';
         }
-    }, [state.formatedSecondsRemaining, state.activeTask]);
+    }, [state]);
 
     return (
         <TaskContext.Provider value={{ state, dispatch }}>
