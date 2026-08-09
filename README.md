@@ -1,34 +1,53 @@
-# React + TypeScript + Vite
+# Pomodoro
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+App web pra gerenciar tempo com a técnica Pomodoro. React 19 + TypeScript + Vite.
 
-Currently, two official plugins are available:
+> **Status:** início de desenvolvimento.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologias
 
-## React Compiler
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/) (modo strict)
+- [Vite 8](https://vite.dev/) com HMR
+- [React Compiler](https://react.dev/learn/react-compiler) — memoização automática, então nada de `useMemo`/`useCallback` manuais
+- [oxlint](https://oxc.rs/) como linter
+- CSS Modules + tokens de design em CSS custom properties
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Pré-requisitos
 
-Note: This will impact Vite dev & build performances.
+- [Node.js](https://nodejs.org/)
+- npm (já vem com o Node)
 
-## Expanding the Oxlint configuration
+## Instalação
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Scripts disponíveis
+
+| Comando | Descrição |
+| --- | --- |
+| `npm run dev` | Sobe o servidor de desenvolvimento (Vite HMR) |
+| `npm run build` | Checa os tipos (`tsc -b`) e gera o build de produção |
+| `npm run lint` | Roda o oxlint |
+| `npm run preview` | Serve localmente o build gerado |
+
+Test runner ainda não foi configurado.
+
+## Estrutura do projeto
+
+src/
+├── main.tsx # Ponto de entrada
+├── App.tsx # Componente raiz
+├── index.css # Estilos globais
+├── assets/ # Imagens e outros arquivos estáticos
+└── components/ # Componentes da aplicação (nomeados, sem export default)
+
+### Estilos
+
+Duas camadas: globais, com os tokens de design (`--accent`, `--text`, `--bg`, `--border` etc.) e os estilos base dos elementos HTML; e por componente, onde cada um tem seu `*.module.css` do lado do `.tsx`.
+
+## Licença
+
+Ainda não definida.
