@@ -21,7 +21,7 @@ export function MainForm(){
 
     function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-        showMessage.dissmiss();
+        showMessage.dismiss();
 
         if(taskNameInput.current === null) return;
 
@@ -49,7 +49,7 @@ export function MainForm(){
 
     function handleInterruptTask(e: React.MouseEvent<HTMLButtonElement, MouseEvent>){
         e.preventDefault();
-        showMessage.dissmiss();
+        showMessage.dismiss();
         showMessage.info('Tarefa interrompida!');
         dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
     }
