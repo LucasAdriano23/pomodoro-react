@@ -28,39 +28,38 @@ export function TaskContextProvider({ children } : TaskContextProviderProps) {
 
         if(state.activeTask && playBeepRef.current === null){
             playBeepRef.current = loadBeep();
-        }else if(!state.activeTask){
+        } else if(!state.activeTask){
             worker.terminate();
-            return;
         }
 
-        worker.onmessage(e => {
-            const countDownSeconds = e.data;
+        if (state.activeTask) {
+            worker.onmessage(e => {
+                const countDownSeconds = e.data;
 
-            if(countDownSeconds <= 0){
-                if(playBeepRef.current){
-                    playBeepRef.current();
-                    playBeepRef.current = null;
+                if(countDownSeconds <= 0){
+                    if(playBeepRef.current){
+                        playBeepRef.current();
+                        playBeepRef.current = null;
+                    }
+
+                    dispatch({ type: TaskActionTypes.COMPLETE_TASK });
+                    worker.terminate();
+                } else {
+                    dispatch({
+                        type: TaskActionTypes.COUNT_DOWN,
+                        payload: { secondsRemaining: countDownSeconds },
+                    });
                 }
+            });
 
-                dispatch({ type: TaskActionTypes.COMPLETE_TASK });
-                worker.terminate();
-            } else {
-                dispatch({
-                    type: TaskActionTypes.COUNT_DOWN,
-                    payload: { secondsRemaining: countDownSeconds },
-                });
-            }
-        });
-
-        worker.postMessage(state);
+            worker.postMessage(state);
+        }
 
         localStorage.setItem('state', JSON.stringify(state));
-        
-        if (state.activeTask) {
-            document.title = `${state.formatedSecondsRemaining} - Pomodoro`;
-        } else {
-            document.title = 'Pomodoro';
-        }
+
+        document.title = state.activeTask
+            ? `${state.formatedSecondsRemaining} - Pomodoro`
+            : 'Pomodoro';
     }, [state]);
 
     return (
